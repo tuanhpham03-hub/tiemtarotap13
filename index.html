@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star Spinner Tarot • Trải Bài Trực Giác & Giải Mã Trọng Tâm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-garden: #6f824a;
+      --butter-paper: #f9f2d7;
+      --butter-card: #fffdf5;
+      --ink-brown: #3e2b1d;
+      --ink-soft: #69513e;
+      --gold-line: #c59b49;
+      --gold-soft: #e6cfa1;
+      --rose-accent: #d97f8c;
+      --rose-soft: #f7dce0;
+      --sage-accent: #52683a;
+      --sky-soft: #dcebf2;
+      --shadow-paper: 0 14px 36px rgba(42, 31, 19, 0.22);
+    }
+
+    body.pastel-mode {
+      --bg-garden: #f7e6ea;
+      --butter-paper: #fffaf0;
+      --ink-brown: #422b32;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--ink-brown);
+      background-color: var(--bg-garden);
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.55) 2px, transparent 3px),
+        radial-gradient(circle at 82% 14%, rgba(255, 244, 200, 0.65) 2.5px, transparent 3.5px),
+        radial-gradient(circle at 45% 78%, rgba(255, 255, 255, 0.5) 2px, transparent 3px),
+        radial-gradient(circle at 72% 65%, rgba(255, 212, 222, 0.6) 3px, transparent 4px),
+        linear-gradient(135deg, rgba(126, 148, 82, 0.92), rgba(92, 112, 56, 0.96));
+      background-size: 180px 180px, 220px 220px, 160px 160px, 260px 260px, 100% 100%;
+      min-height: 100vh;
+      padding-bottom: 60px;
+      transition: all 0.35s ease;
+    }
+
+    body.pastel-mode {
+      background-image:
+        radial-gradient(circle at 20% 25%, rgba(255, 223, 186, 0.55) 0%, transparent 45%),
+        radial-gradient(circle at 80% 30%, rgba(215, 236, 248, 0.65) 0%, transparent 50%),
+        linear-gradient(160deg, #fae8ed 0%, #fdf6e2 52%, #e6f1f5 100%);
+      background-size: 100% 100%;
+    }
+
+    /* Top Navigation */
+    .topbar {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 251, 240, 0.92);
+      padding: 8px 18px;
+      border-radius: 999px;
+      border: 1.5px solid var(--gold-line);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+
+    .brand-badge span.title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--ink-brown);
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      background: var(--butter-paper);
+      color: var(--ink-brown);
+      border: 1.5px solid var(--gold-line);
+      padding: 8px 15px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-btn:hover {
+      transform: translateY(-2px);
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .pill-btn.active-ai {
+      background: #3e2b1d;
+      color: #f9f2d7;
+      border-color: #d4af37;
+    }
+
+    /* Container */
+    .main-wrap {
+      max-width: 1120px;
+      margin: 10px auto;
+      padding: 0 18px;
+    }
+
+    /* Hero Poster Section */
+    .poster-sheet {
+      background: var(--butter-paper);
+      border: 2px solid var(--gold-line);
+      border-radius: 6px;
+      padding: 34px 32px;
+      box-shadow: var(--shadow-paper);
+      position: relative;
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+
+    .poster-sheet::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(197, 155, 73, 0.45);
+      pointer-events: none;
+    }
+
+    .script-watermark {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.4rem;
+      color: rgba(197, 155, 73, 0.22);
+      position: absolute;
+      top: 10px;
+      right: 26px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .hero-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .deck-tag {
+      display: inline-block;
+      background: var(--rose-soft);
+      color: #7c323f;
+      border: 1px solid #d97f8c;
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .hero-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink-brown);
+      margin-bottom: 10px;
+    }
+
+    .hero-header p {
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    /* Question & Controls Form */
+    .console-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 860px) {
+      .console-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .input-box, .config-box {
+      background: rgba(255, 253, 245, 0.85);
+      border: 1.5px solid var(--gold-soft);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .box-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--ink-brown);
+    }
+
+    .detected-badge {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 99px;
+      background: #e9f2dd;
+      color: #3b5822;
+      font-weight: 600;
+      border: 1px solid #a8c486;
+    }
+
+    textarea#questionInput {
+      width: 100%;
+      min-height: 92px;
+      border: 1.5px solid #d8c398;
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 0.96rem;
+      color: var(--ink-brown);
+      background: #fffef9;
+      resize: vertical;
+      outline: none;
+    }
+
+    textarea#questionInput:focus {
+      border-color: var(--rose-accent);
+      box-shadow: 0 0 0 3px rgba(217, 127, 140, 0.16);
+    }
+
+    .quick-prompts {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .prompt-chip {
+      font-size: 0.76rem;
+      background: #f5ebd1;
+      color: var(--ink-brown);
+      border: 1px solid #d5be8c;
+      padding: 5px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .prompt-chip:hover {
+      background: var(--rose-soft);
+      border-color: var(--rose-accent);
+    }
+
+    .select-group {
+      margin-bottom: 14px;
+    }
+
+    .select-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--ink-soft);
+    }
+
+    select, input.text-input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1.5px solid #d8c398;
+      background: #fffef9;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--ink-brown);
+    }
+
+    .primary-btn {
+      width: 100%;
+      background: var(--ink-brown);
+      color: var(--butter-paper);
+      border: 1.5px solid var(--gold-line);
+      padding: 13px 20px;
+      border-radius: 6px;
+      font-size: 0.96rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    .primary-btn:hover {
+      background: #573d29;
+      transform: translateY(-1px);
+    }
+
+    /* Card Picking Fan Table */
+    .table-section {
+      background: rgba(249, 242, 215, 0.95);
+      border: 2px solid var(--gold-line);
+      border-radius: 6px;
+      padding: 26px;
+      box-shadow: var(--shadow-paper);
+      margin-bottom: 28px;
+      display: none;
+    }
+
+    .table-section.visible {
+      display: block;
+    }
+
+    .table-instruction {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .table-instruction h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      margin-bottom: 4px;
+    }
+
+    .deck-ribbon {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      max-height: 250px;
+      overflow-y: auto;
+      padding: 14px 8px;
+    }
+
+    /* Back of Star Spinner Card in Ribbon */
+    .mini-card-back {
+      width: 58px;
+      height: 96px;
+      background: linear-gradient(160deg, #32293d 0%, #4b3856 50%, #2b2336 100%);
+      border: 2px solid #e2c178;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.22);
+    }
+
+    .mini-card-back::before {
+      content: "✦";
+      color: #f3d899;
+      font-size: 1.15rem;
+    }
+
+    .mini-card-back::after {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px solid rgba(243, 216, 153, 0.45);
+      border-radius: 3px;
+    }
+
+    .mini-card-back:hover {
+      transform: translateY(-10px) scale(1.06);
+      box-shadow: 0 10px 18px rgba(0,0,0,0.3);
+      border-color: #fff2cc;
+    }
+
+    .mini-card-back.picked {
+      opacity: 0.2;
+      pointer-events: none;
+      transform: scale(0.9);
+    }
+
+    /* Drawn Cards Stage - Star Spinner Tarot Frame */
+    .spread-stage {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+      gap: 24px;
+      margin: 26px 0;
+    }
+
+    .tarot-slot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .slot-badge {
+      background: var(--ink-brown);
+      color: var(--butter-paper);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Authentic Star Spinner Tarot Card Template */
+    .star-spinner-card {
+      width: 230px;
+      height: 386px;
+      background: var(--butter-card);
+      border: 2.5px solid #c59b49;
+      border-radius: 14px;
+      padding: 10px;
+      position: relative;
+      box-shadow: 0 12px 28px rgba(38, 26, 16, 0.25);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.35s ease;
+      overflow: hidden;
+    }
+
+    .star-spinner-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .star-spinner-card.reversed-art .card-illustration-wrap svg {
+      transform: rotate(180deg);
+    }
+
+    /* Art Nouveau Arch Frame inside Card */
+    .card-inner-frame {
+      border: 1.5px solid #d4b068;
+      border-radius: 9px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background: linear-gradient(180deg, #fff9ee 0%, #f9ecd8 52%, #f5e1df 100%);
+      overflow: hidden;
+    }
+
+    .corner-star {
+      position: absolute;
+      font-size: 0.72rem;
+      color: #b88a32;
+      z-index: 2;
+    }
+    .corner-star.tl { top: 5px; left: 7px; }
+    .corner-star.tr { top: 5px; right: 7px; }
+
+    .card-top-arch {
+      text-align: center;
+      padding-top: 7px;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8a6626;
+      font-weight: 700;
+    }
+
+    .card-illustration-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      position: relative;
+    }
+
+    .card-illustration-wrap svg {
+      width: 168px;
+      height: 215px;
+      transition: transform 0.4s ease;
+      filter: drop-shadow(0 4px 8px rgba(62, 43, 29, 0.12));
+    }
+
+    .card-Caption-visual {
+      font-size: 0.7rem;
+      line-height: 1.35;
+      color: #5c4433;
+      background: rgba(255, 253, 246, 0.88);
+      padding: 5px 8px;
+      margin: 0 8px 6px;
+      border-radius: 4px;
+      border: 1px dashed #d5b87c;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .card-banner-Bottom {
+      background: #3e2b1d;
+      color: #f9f2d7;
+      text-align: center;
+      padding: 7px 6px;
+      border-top: 1.5px solid #c59b49;
+    }
+
+    .card-numeral {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      color: #e8c67a;
+      display: block;
+    }
+
+    .card-title-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .orientation-pill {
+      margin-top: 8px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+
+    .orientation-pill.up {
+      background: #e3f0d5;
+      color: #2f5218;
+    }
+
+    .orientation-pill.rev {
+      background: #f9dce0;
+      color: #822735;
+    }
+
+    /* Direct Reading Result Notebook */
+    .reading-notebook {
+      background: #fffdf7;
+      border: 2px solid var(--gold-line);
+      border-radius: 8px;
+      box-shadow: var(--shadow-paper);
+      padding: 32px 30px 32px 44px;
+      position: relative;
+      display: none;
+    }
+
+    .reading-notebook.visible {
+      display: block;
+    }
+
+    /* Spiral rings on left */
+    .reading-notebook::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      bottom: 20px;
+      left: 12px;
+      width: 14px;
+      background-image: radial-gradient(circle, #5b4636 4px, transparent 5px);
+      background-size: 14px 32px;
+    }
+
+    /* Direct Verdict Box (Đi thẳng vào trọng tâm) */
+    .verdict-banner {
+      background: linear-gradient(135deg, #3e2b1d 0%, #593d2b 100%);
+      color: #f9f2d7;
+      border: 2px solid #d4af37;
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin-bottom: 24px;
+    }
+
+    .verdict-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid rgba(232, 198, 122, 0.35);
+      padding-bottom: 10px;
+    }
+
+    .verdict-tag {
+      background: #e8c67a;
+      color: #2e1d10;
+      font-weight: 800;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 99px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .verdict-main-answer {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: #ffe6a3;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .verdict-sub {
+      font-size: 0.94rem;
+      line-height: 1.65;
+      color: #f5ebd6;
+    }
+
+    /* Detailed Card Analysis Cards */
+    .card-analysis-item {
+      border: 1.5px solid #e2cfa6;
+      background: #fffaf0;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+    }
+
+    .card-analysis-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      color: var(--ink-brown);
+      margin-bottom: 6px;
+    }
+
+    .visual-lore-box {
+      font-size: 0.84rem;
+      color: #6e523d;
+      background: #f4ead2;
+      padding: 8px 12px;
+      border-left: 3px solid #c59b49;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .direct-points {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .direct-points li {
+      font-size: 0.93rem;
+      line-height: 1.6;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .direct-points li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--rose-accent);
+    }
+
+    /* Modal for AI Key */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(25, 18, 12, 0.65);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 16px;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--butter-paper);
+      border: 2px solid var(--gold-line);
+      border-radius: 10px;
+      max-width: 520px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: var(--shadow-paper);
+    }
+
+    .modal-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .modal-card p {
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      margin-bottom: 14px;
+    }
+
+    .follow-up-box {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1.5px dashed #cbb382;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="brand-badge">
+      <span>✦</span>
+      <span class="title">THE STAR SPINNER TAROT • STUDIO</span>
+    </div>
+    <div class="top-actions">
+      <button class="pill-btn" id="themeToggleBtn" onclick="toggleTheme()">🌿 Nền: Vườn Cỏ Nắng</button>
+      <button class="pill-btn" id="aiModalBtn" onclick="openAiModal()">✨ Cấu hình AI Reader (Tùy chọn)</button>
+      <button class="pill-btn" onclick="resetSession()">↺ Trải bài mới</button>
+    </div>
+  </header>
+
+  <main class="main-wrap">
+    <!-- Poster Input Sheet -->
+    <section class="poster-sheet">
+      <div class="script-watermark">Star Spinner</div>
+      <div class="hero-header">
+        <span class="deck-tag">Khuôn Mẫu 81 Lá The Star Spinner Tarot • Trungles</span>
+        <h1>Trải Bài Đi Thẳng Vào Trọng Tâm Câu Hỏi</h1>
+        <p>Hệ thống tự động bóc tách ngữ cảnh câu hỏi (Tình cảm, Người cũ, Nhảy việc, Tài chính, Yes/No, Thời gian) kết hợp hình tượng cổ tích của bộ bài <em>The Star Spinner Tarot</em> để đưa ra câu trả lời trực diện, không vòng vo.</p>
+      </div>
+
+      <div class="console-grid">
+        <!-- Cột Nhập Câu Hỏi -->
+        <div class="input-box">
+          <div class="box-label">
+            <span>1. Nhập câu hỏi cụ thể của bạn</span>
+            <span class="detected-badge" id="intentBadge">Chủ đề: Tự động nhận diện</span>
+          </div>
+          <textarea id="questionInput" placeholder="Ví dụ: Người cũ có còn nghĩ đến mình và muốn quay lại không? / Tháng này mình có nên nhảy việc sang công ty mới không?..." oninput="detectQuestionIntent()"></textarea>
+          
+          <div class="quick-prompts">
+            <span class="prompt-chip" onclick="setSampleQuestion('Người ấy đang nghĩ gì về mình, tụi mình có tiến xa được không?')">💗 Người ấy nghĩ gì về mình?</span>
+            <span class="prompt-chip" onclick="setSampleQuestion('Người cũ có muốn quay lại với mình trong thời gian tới không?')">🌙 Người cũ có quay lại?</span>
+            <span class="prompt-chip" onclick="setSampleQuestion('Mình có nên nghỉ chỗ làm hiện tại để nhảy việc ngay lúc này không?')">💼 Có nên nhảy việc lúc này?</span>
+            <span class="prompt-chip" onclick="setSampleQuestion('Dự án kinh doanh/đầu tư sắp tới của mình có sinh lời tốt không?')">🪙 Dự án này lời hay lỗ?</span>
+          </div>
+        </div>
+
+        <!-- Cột Cấu Hình Trải Bài -->
+        <div class="config-box">
+          <div class="box-label">
+            <span>2. Chọn sơ đồ & Thiết lập bộ bài</span>
+          </div>
+
+          <div class="select-group">
+            <label for="spreadSelect">Sơ đồ trải bài trọng tâm:</label>
+            <select id="spreadSelect">
+              <option value="1">1 Lá • Chốt Hạ Trực Diện (Có/Không & Lời khuyên thẳng)</option>
+              <option value="3_focus" selected>3 Lá • Trọng Tâm Vấn Đề (Sự thật hiện tại – Rào cản ẩn – Kết quả)</option>
+              <option value="3_love">3 Lá • Soi Chiếu Mối Quan Hệ (Tâm lý bạn – Tâm lý họ – Tương lai gần)</option>
+              <option value="3_career">3 Lá • Quyết Định Công Việc & Tài Chính (Cơ hội – Rủi ro – Hướng đi)</option>
+            </select>
+          </div>
+
+          <div class="select-group">
+            <label for="loversVariant">Phiên bản lá VI. The Lovers (Đặc trưng Star Spinner 81 lá):</label>
+            <select id="loversVariant">
+              <option value="all">Trộn cả 4 phiên bản The Lovers vào bộ bài (81 lá)</option>
+              <option value="eros">Bản 1: Eros & Psyche (Tình yêu vượt thử thách)</option>
+              <option value="samesex_f">Bản 2: Đôi Tình Nhân Nữ Dưới Vòm Hoa (Sự đồng điệu dịu dàng)</option>
+              <option value="samesex_m">Bản 3: Đôi Tình Nhân Nam Giữa Tinh Tú (Cam kết song hành)</option>
+              <option value="nonbinary">Bản 4: Đôi Tình Nhân Tự Do Đa Sắc (Tình yêu vượt khuôn mẫu)</option>
+            </select>
+          </div>
+
+          <button class="primary-btn" onclick="startShuffleTable()">✦ Xáo Bộ Bài Star Spinner & Bắt Đầu Bốc Bài</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bàn Xáo & Rút Bài -->
+    <section class="table-section" id="tableSection">
+      <div class="table-instruction">
+        <h2 id="pickCounterTitle">Hãy giữ câu hỏi trong tâm trí và chọn đủ số lá bài</h2>
+        <p style="font-size:0.9rem; color:var(--ink-soft);">Mỗi lá bài mang khung viền chỉ vàng & hình tượng chuẩn từ <em>The Star Spinner Tarot</em> (có xét cả chiều Xuôi & Ngược).</p>
+      </div>
+
+      <div class="deck-ribbon" id="deckRibbon"></div>
+
+      <!-- Sân khấu hiển thị các lá bài đã bốc -->
+      <div class="spread-stage" id="spreadStage"></div>
+    </section>
+
+    <!-- Sổ Tay Giải Mã Trực Diện -->
+    <section class="reading-notebook" id="readingNotebook">
+      <div id="readingContent"></div>
+
+      <div class="follow-up-box">
+        <button class="pill-btn" onclick="drawClarifierCard()">🃏 Rút thêm 1 lá Làm Rõ (Clarifier) cho kết quả này</button>
+        <button class="pill-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">⬆️ Đặt câu hỏi tiếp theo</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Cấu Hình Gemini AI Reader -->
+  <div class="modal-backdrop" id="aiModal">
+    <div class="modal-card">
+      <h3>✨ Chế độ AI Tarot Reader Thực Chiến</h3>
+      <p>Mặc định web đã có sẵn <strong>Bộ máy Bóc Tách Trọng Tâm</strong> chạy ngay lập tức. Nếu bạn muốn AI phân tích sâu từng câu chữ riêng biệt của khách theo phong cách Reader 5 năm kinh nghiệm, hãy dán Gemini API Key vào bên dưới:</p>
+      <div class="select-group">
+        <label>Gemini API Key (Lưu an toàn trên trình duyệt của bạn):</label>
+        <input type="password" id="geminiKeyInput" class="text-input" placeholder="AIzaSy..." />
+      </div>
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:16px;">
+        <button class="pill-btn" onclick="closeAiModal()">Đóng</button>
+        <button class="pill-btn active-ai" onclick="saveAiKey()">Lưu & Kích hoạt</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       1. DỮ LIỆU & HÌNH TƯỢNG CHUẨN BỘ BÀI THE STAR SPINNER TAROT (81 LÁ)
+       ========================================================================== */
+    const MAJOR_ARCANA_DATA = [
+      {
+        num: "0", name: "The Fool", vi: "Chàng Khờ Bước Qua Vách Đá Hoa", element: "Air", yesNo: "YES", weight: 2,
+        visual: "Chàng lữ khách trẻ mặc áo choàng thêu sao bước đi thản nhiên bên vách đá nở hoa, tay cầm nhành hồng trắng, chú chó nhỏ nhảy chân sáo bên cạnh.",
+        love: "Tình cảm đang ở giai đoạn rung động tự nhiên, thích tự do tìm hiểu chứ chưa muốn bị trói buộc bởi cam kết nặng nề. Nếu hỏi về người cũ: họ đang muốn làm mới cuộc sống riêng hơn là quay lại chuyện cũ.",
+        career: "Cơ hội mới rất đáng thử sức! Dù bạn chưa có đủ 100% kinh nghiệm, sự liều lĩnh có tính toán lúc này sẽ mở ra cánh cửa mới thay vì cứ dậm chân tại chỗ.",
+        finance: "Cẩn thận chi tiêu cảm hứng hoặc rót tiền vào thứ mình chưa tìm hiểu kỹ giấy tờ.",
+        action: "Bỏ bớt nỗi sợ bị đánh giá đi, cứ bước bước đầu tiên nhưng giữ lại một khoản dự phòng."
+      },
+      {
+        num: "I", name: "The Magician", vi: "Pháp Sư Tinh Tú", element: "Air", yesNo: "YES", weight: 3,
+        visual: "Pháp sư một tay chỉ lên bầu trời sao, một tay chỉ xuống đất ('As above, so below'), trước mặt là Gậy hoa, Cốc vàng, Kiếm bạc và Đồng tiền cổ.",
+        love: "Đối phương là người rất biết cách thu hút và chủ động dẫn dắt câu chuyện. Nếu bạn đang chờ một tín hiệu hay tin nhắn, người này hoàn toàn có ý định tạo kết nối rõ ràng.",
+        career: "Thời điểm vàng để đàm phán lương, chốt khách hoặc tự triển khai dự án riêng. Bạn đã có đủ năng lực và công cụ trong tay, chỉ thiếu việc bắt tay vào làm ngay.",
+        finance: "Khả năng kiếm tiền từ kỹ năng chuyên môn hoặc nghề tay trái cực kỳ sáng sủa.",
+        action: "Chủ động mở lời trước hoặc tung sản phẩm/kế hoạch ra ngay tuần này."
+      },
+      {
+        num: "II", name: "The High Priestess", vi: "Nữ Tư Tế Ánh Trăng", element: "Water", yesNo: "WAIT", weight: 1,
+        visual: "Nữ tư tế ngồi tĩnh lặng giữa hai cột trụ sáng - tối, vầng trăng lưỡi liềm dưới chân và tấm màn thêu hoa lựu che giấu bí mật phía sau.",
+        love: "Có rất nhiều tâm sự đang được giấu kín. Đối phương thích bạn hoặc để ý bạn nhưng chọn im lặng quan sát chứ chưa chịu bộc lộ. Cẩn thận mối quan hệ có góc khuất hoặc mập mờ.",
+        career: "Chưa phải lúc công khai kế hoạch hay vội vàng ký kết. Có thông tin nội bộ bạn chưa nắm hết, hãy lắng nghe trực giác và tìm hiểu kỹ thêm.",
+        finance: "Giữ chặt ví, chưa nên xuống tiền đầu tư khi thông tin còn mập mờ.",
+        action: "Lùi lại một bước để quan sát hành động thực tế của họ thay vì nghe lời hứa."
+      },
+      {
+        num: "III", name: "The Empress", vi: "Hoàng Hậu Khu Vườn Phì Nhiêu", element: "Earth", yesNo: "YES", weight: 3,
+        visual: "Hoàng hậu đội vương miện 12 vì sao tựa mình giữa vườn hoa mẫu đơn và lúa chín, biểu tượng của sự trù phú, quyến rũ và nuôi dưỡng.",
+        love: "Năng lượng thu hút cực mạnh! Đối phương thấy ở bạn sự ấm áp, cuốn hút và muốn chăm sóc lâu dài. Rất tốt cho việc tiến tới mối quan hệ chính thức hoặc hàn gắn.",
+        career: "Các công việc liên quan đến sáng tạo, làm đẹp, ẩm thực, truyền thông hoặc chăm sóc khách hàng sẽ nở rộ và mang lại thành quả thực tế.",
+        finance: "Tài chính dồi dào, có lộc ăn uống, quà cáp hoặc lợi nhuận thu về đều đặn.",
+        action: "Tập trung chăm chút bản thân và giá trị của mình, tự khắc người và cơ hội sẽ tìm đến."
+      },
+      {
+        num: "IV", name: "The Emperor", vi: "Hoàng Đế Ngai Đá", element: "Fire", yesNo: "YES", weight: 2,
+        visual: "Vị hoàng đế uy nghiêm khoác giáp trụ ngồi trên ngai đá chạm đầu cừu đực, tay cầm quả cầu quyền lực và vương trượng.",
+        love: "Đối phương là người lý trí, cái tôi lớn, thích kiểm soát nhưng có trách nhiệm. Họ yêu bằng hành động thực tế hơn là lời ngọt ngào, đôi khi hơi gia trưởng và cứng nhắc.",
+        career: "Cần sự kỷ luật, quy trình rõ ràng. Nếu đang xin việc hoặc làm việc với sếp/khách hàng lớn, sự chuyên nghiệp và số liệu cụ thể sẽ giúp bạn thắng thế.",
+        finance: "Tài chính vững vàng nhờ quản lý chặt chẽ, thích hợp đầu tư dài hạn an toàn.",
+        action: "Dùng lý trí và kế hoạch rõ ràng để giải quyết vấn đề, đừng để cảm xúc làm mềm lòng."
+      },
+      {
+        num: "V", name: "The Hierophant", vi: "Giáo Hoàng Truyền Thống", element: "Earth", yesNo: "YES", weight: 1,
+        visual: "Bậc thầy tâm linh ngồi giữa đền thờ cổ, trao truyền tri thức cho hai môn đệ bên dưới cùng cặp chìa khóa giao nhau.",
+        love: "Mối quan hệ hướng tới sự nghiêm túc, công khai với gia đình hoặc cam kết lâu dài. Tuy nhiên đôi bên dễ bị áp lực bởi định kiến gia đình hoặc tiêu chuẩn truyền thống.",
+        career: "Phù hợp làm việc trong môi trường có quy chuẩn, tập đoàn lớn, giáo dục hoặc cần tìm một người thầy/mentor dẫn dắt thay vì tự bơi một mình.",
+        finance: "Tiền bạc đến từ nguồn chính thống, lương thưởng ổn định, không hợp đầu cơ lướt sóng.",
+        action: "Làm đúng quy trình, tham khảo ý kiến người có kinh nghiệm lâu năm."
+      },
+      {
+        num: "VI", name: "The Lovers (Eros & Psyche)", vi: "Đôi Tình Nhân Định Mệnh", element: "Air", yesNo: "YES", weight: 3,
+        visual: "Thần tình yêu Eros có cánh ôm lấy nàng Psyche giữa vòng hoa hồng và ánh sao rực rỡ (Phiên bản đặc trưng của Star Spinner).",
+        love: "Sự thu hút hai chiều cực kỳ mãnh liệt! Cả hai có sự đồng điệu cả về cảm xúc lẫn thể xác. Tuy nhiên lá bài cũng đặt ra một lựa chọn dứt khoát: chọn người này và buông bỏ những phương án mập mờ khác.",
+        career: "Sự hợp tác ăn ý với đối tác hoặc khách hàng. Bạn đang đứng trước ngã rẽ nghề nghiệp đòi hỏi phải chọn hướng đi mình thực sự đam mê.",
+        finance: "Hợp tác làm ăn chung có lợi, nhưng cần thống nhất rõ mục tiêu ngay từ đầu.",
+        action: "Lắng nghe trái tim nhưng phải đưa ra cam kết rõ ràng, không đứng núi này trông núi nọ."
+      },
+      {
+        num: "VII", name: "The Chariot", vi: "Chiến Xa Tinh Vân", element: "Water", yesNo: "YES", weight: 3,
+        visual: "Chiến binh trẻ tuổi điều khiển cỗ xe kéo bởi hai linh thú Nhân Sư đen và trắng phi nước đại qua bầu trời đêm.",
+        love: "Mọi thứ sẽ tiến triển rất nhanh nếu bạn hoặc đối phương chủ động tấn công. Đừng ngồi chờ sung rụng, ai cầm dây cương người đó thắng.",
+        career: "Tốc độ và quyết tâm cao độ! Rất tốt cho việc chạy chiến dịch, chốt mục tiêu doanh số, đi công tác xa hoặc chuyển sang môi trường năng động hơn.",
+        finance: "Dòng tiền luân chuyển nhanh, thu hồi vốn hoặc đạt doanh thu vượt kỳ vọng nhờ sự quyết liệt.",
+        action: "Tập trung 100% vào mục tiêu chính, gạt bỏ sự phân tâm và tiến thẳng về phía trước."
+      },
+      {
+        num: "VIII", name: "Strength", vi: "Sức Mạnh Dịu Dàng", element: "Fire", yesNo: "YES", weight: 2,
+        visual: "Thiếu nữ đội vòng hoa vô cực nhẹ nhàng vuốt ve bờm chú sư tử dũng mãnh bằng sự kiên nhẫn và lòng trắc ẩn.",
+        love: "Lấy nhu thắng cương! Sự căng thẳng hay cái tôi của đối phương chỉ có thể được hóa giải bằng sự mềm mỏng, bao dung chứ không phải bằng cãi vã hơn thua.",
+        career: "Bạn đủ bản lĩnh để vượt qua giai đoạn áp lực cao hiện tại. Hãy kiên trì thuyết phục khách hàng/đối tác bằng sự tinh tế thay vì đối đầu gay gắt.",
+        finance: "Kiểm soát tốt ham muốn mua sắm bốc đồng, tích lũy bền bỉ.",
+        action: "Kiên nhẫn, giữ bình tĩnh và dùng sự khéo léo để thu phục tình thế."
+      },
+      {
+        num: "IX", name: "The Hermit", vi: "Ẩn Sĩ Cầm Đèn Sao", element: "Earth", yesNo: "WAIT", weight: 0,
+        visual: "Người ẩn sĩ khoác áo choàng dài đứng trên đỉnh núi tuyết, giơ cao chiếc lồng đèn chứa ngôi sao 6 cánh soi đường trong đêm.",
+        love: "Một trong hai người (hoặc cả hai) đang cần không gian riêng để tĩnh tâm. Nếu hỏi người cũ hay crush: lúc này họ đang thu mình lại, chưa sẵn sàng mở lòng yêu đương.",
+        career: "Thời gian tuyệt vời để tự nghiên cứu sâu chuyên môn, làm freelancer độc lập hoặc nhìn nhận lại con đường dài hạn trước khi nhảy việc.",
+        finance: "Thắt lưng buộc bụng, tránh xa đám đông đầu cơ ồn ào.",
+        action: "Tạm ngừng chạy theo người khác, dành thời gian ở một mình để nhìn rõ mình thực sự cần gì."
+      },
+      {
+        num: "X", name: "Wheel of Fortune", vi: "Bánh Xe Vận Mệnh", element: "Fire", yesNo: "YES", weight: 2,
+        visual: "Bánh xe cổ tích xoay chuyển giữa mây trời, 4 góc là 4 linh vật đại diện cho 4 nguyên tố Wands, Chalices, Swords, Coins.",
+        love: "Một bước ngoặt bất ngờ do duyên số sắp đặt! Có thể là một cuộc gặp gỡ tình cờ hoặc sự thay đổi cục diện mối quan hệ mà bạn không tính trước được.",
+        career: "Vận may và thời cơ bất ngờ gõ cửa. Hãy linh hoạt nắm bắt sự thay đổi của thị trường thay vì cố giữ cách làm cũ.",
+        finance: "Có khoản thu bất ngờ hoặc biến động dòng tiền nhanh, cần nhạy bén chớp thời cơ.",
+        action: "Thuận theo dòng chảy đang mở ra, cơ hội đến là phải nắm lấy ngay."
+      },
+      {
+        num: "XI", name: "Justice", vi: "Công Lý Cân Bằng", element: "Air", yesNo: "WAIT", weight: 1,
+        visual: "Nữ thần Công Lý cầm thanh kiếm thẳng đứng và cán cân vàng hoàn hảo giữa hai cột trụ đối xứng.",
+        love: "Mối quan hệ đang đặt lên bàn cân sòng phẳng: bạn cho đi bao nhiêu thì nhận lại bấy nhiêu. Nếu đối phương từng đối xử tệ, bạn sẽ sớm nhìn ra sự thật rất tỉnh táo.",
+        career: "Mọi giấy tờ, hợp đồng, KPI hoặc kết quả phỏng vấn sẽ được đánh giá công tâm theo đúng năng lực thực tế. Đọc kỹ các điều khoản pháp lý.",
+        finance: "Thu chi rõ ràng, giải quyết dứt điểm nợ nần hoặc sổ sách.",
+        action: "Đánh giá sự việc bằng lý trí 100%, công bằng với chính bản thân mình."
+      },
+      {
+        num: "XII", name: "The Hanged Man", vi: "Người Treo Ngược Giữa Cành Hoa", element: "Water", yesNo: "WAIT", weight: -1,
+        visual: "Chàng trai treo ngược một chân trên cành cây cổ thụ nở hoa nhưng gương mặt bình thản và tỏa hào quang nhận thức mới.",
+        love: "Mọi thứ đang rơi vào trạng thái 'treo' và bế tắc tạm thời. Càng hối thúc, nhắn tin dồn dập càng làm đối phương ngột ngạt. Bạn cần đổi góc nhìn về mối quan hệ này.",
+        career: "Dự án hoặc kế hoạch xin việc bị trì hoãn ngoài ý muốn. Đừng cố đấm ăn xôi lúc này, hãy tận dụng khoảng nghỉ để chuẩn bị lại.",
+        finance: "Dòng tiền bị chôn chân hoặc chậm thanh toán, chưa nên rót thêm vốn.",
+        action: "Dừng mọi hành động thúc ép lại, chấp nhận lùi 1 bước để nhìn toàn cảnh."
+      },
+      {
+        num: "XIII", name: "Death", vi: "Sự Chuyển Hóa & Khép Lại", element: "Water", yesNo: "NO", weight: -2,
+        visual: "Bộ xương khoác áo choàng đen giữa cánh đồng hoa trắng đang tàn để nhường chỗ cho mầm cây mới mọc lên dưới ánh bình minh.",
+        love: "Một chương cũ buộc phải chấm dứt hoàn toàn. Nếu hỏi về người cũ: mối quan hệ theo kiểu cũ đã chết, chỉ khi cả hai lột xác hoàn toàn mới có thể nói chuyện lại, còn hiện tại là KHÔNG.",
+        career: "Đã đến lúc nghỉ hẳn công việc không còn giá trị hoặc đóng lại dự án cũ để chuyển sang một lĩnh vực/môi trường mới mẻ hoàn toàn.",
+        finance: "Cắt lỗ dứt khoát những khoản đầu tư kém hiệu quả để bảo toàn vốn.",
+        action: "Dũng cảm buông bỏ thứ đã hết hạn sử dụng trong cuộc đời bạn."
+      },
+      {
+        num: "XIV", name: "Temperance", vi: "Thiên Thần Hòa Hợp", element: "Fire", yesNo: "YES", weight: 2,
+        visual: "Thiên thần có cánh đứng một chân dưới suối, một chân trên đá, nhẹ nhàng rót dòng nước ánh sáng qua lại giữa hai chiếc cốc vàng.",
+        love: "Sự chữa lành, giảng hòa và thấu hiểu từ tốn. Mối quan hệ phát triển êm đềm, không ồn ào nhưng bền chặt nhờ biết nhường nhịn nhau.",
+        career: "Kết hợp hài hòa giữa nhiều kỹ năng hoặc làm cầu nối điều phối giữa các bên (Account/Quản lý dự án) sẽ mang lại hiệu quả cực tốt.",
+        finance: "Cân đối thu chi nhịp nhàng, đầu tư vừa phải và an toàn.",
+        action: "Điềm tĩnh dung hòa hai thái cực, đừng vội vàng đốt cháy giai đoạn."
+      },
+      {
+        num: "XV", name: "The Devil", vi: "Ám Ảnh & Xiềng Xích Ngọt Ngào", element: "Earth", yesNo: "NO", weight: -3,
+        visual: "Thực thể bóng tối có sừng cuốn hút nhưng giữ sợi xích lỏng lẻo quanh hai con người đang bị cám dỗ bởi đam mê và sự phụ thuộc.",
+        love: "Cảnh báo mối quan hệ độc hại (toxic), phụ thuộc cảm xúc, ghen tuông kiểm soát hoặc chỉ thuần túy thu hút thể xác mà thiếu cam kết lành mạnh. Người cũ quay lại chủ yếu vì thói quen/cô đơn chứ chưa thay đổi.",
+        career: "Bạn đang bị trói chân ở một nơi làm việc quá tải chỉ vì sợ mất thu nhập hoặc bị cuốn vào những lời mời chào lợi nhuận ảo.",
+        finance: "Cẩn thận nợ nần, chi tiêu quá tay hoặc hợp đồng có điều khoản bẫy.",
+        action: "Tỉnh táo tháo chiếc vòng xích trên cổ ra — quyền bước đi nằm ở tay bạn."
+      },
+      {
+        num: "XVI", name: "The Tower", vi: "Tòa Tháp Sụp Đổ Dưới Ánh Chớp", element: "Fire", yesNo: "NO", weight: -3,
+        visual: "Tia sét đánh trúng đỉnh tháp cao xây trên nền đá chênh vênh, phá vỡ những ảo tưởng giả tạo để lộ bầu trời sự thật.",
+        love: "Một sự thật bất ngờ bị phơi bày hoặc cuộc cãi vã làm vỡ tung những ấm ức tích tụ bấy lâu. Đau nhưng cần thiết để bạn không còn sống trong ảo tưởng nữa.",
+        career: "Thay đổi đột ngột về nhân sự, cơ cấu công ty hoặc hủy kèo phút chót. Đừng hoảng loạn, sự đổ vỡ này giúp bạn thoát khỏi một nền tảng mục ruỗng.",
+        finance: "Tránh tuyệt đối các quyết định mạo hiểm lúc này để phòng hao hụt bất ngờ.",
+        action: "Chấp nhận sự thật trần trụi và xây dựng lại trên nền tảng trung thực hơn."
+      },
+      {
+        num: "XVII", name: "The Star", vi: "Ngôi Sao Hy Vọng & Chữa Lành", element: "Air", yesNo: "YES", weight: 3,
+        visual: "Tiên nữ bên hồ nước trong vắt dưới bầu trời 8 ngôi sao lớn, một bình rót nước nuôi dưỡng đất liền, một bình hòa vào dòng suối.",
+        love: "Sau tổn thương là sự bình yên và hy vọng chân thành. Mối quan hệ có cơ hội được chữa lành, hoặc bạn sắp gặp một người mang lại cảm giác bình yên, trong sáng.",
+        career: "Thương hiệu cá nhân, hình ảnh truyền thông và ý tưởng sáng tạo của bạn tỏa sáng. Rất hợp để xây dựng kênh riêng hoặc theo đuổi định hướng lâu dài.",
+        finance: "Tài chính hồi phục dần đều, đầu tư vào tương lai sẽ gặt quả ngọt.",
+        action: "Giữ vững niềm tin và thể hiện đúng con người thật của bạn ra bên ngoài."
+      },
+      {
+        num: "XVIII", name: "The Moon", vi: "Ánh Trăng Hồ Ảo Ảnh", element: "Water", yesNo: "WAIT", weight: -2,
+        visual: "Vầng trăng tròn huyền ảo chiếu xuống mặt hồ sương mù, con tôm hùm bò lên từ đáy nước tối giữa hai ngọn tháp xa xăm.",
+        love: "Rất nhiều bất an, suy diễn (overthinking) và thông tin chưa rõ ràng! Đối phương đang giấu giếm điều gì đó hoặc bản thân họ cũng đang hoang mang không biết mình muốn gì.",
+        career: "Cẩn thận lời hứa suông từ sếp/khách hàng hoặc những điều khoản mập mờ. Đừng quyết định nghỉ việc hay ký kết khi tâm lý đang bất ổn vào ban đêm.",
+        finance: "Rủi ro bị lừa gạt hoặc nhìn nhầm giá trị thực tế, tuyệt đối không đầu tư mù quáng.",
+        action: "Đợi sương mù tan hết và kiểm chứng bằng bằng chứng rõ ràng trước khi tin."
+      },
+      {
+        num: "XIX", name: "The Sun", vi: "Mặt Trời Rực Rỡ Giữa Vườn Hướng Dương", element: "Fire", yesNo: "YES", weight: 3,
+        visual: "Mặt trời vàng rực tỏa nắng ấm áp xuống khu vườn hoa hướng dương nở rộ, mang lại niềm vui thuần khiết và sự minh bạch.",
+        love: "Tín hiệu cực kỳ tích cực! Tình cảm chân thành, rõ ràng, công khai và mang lại tiếng cười cho nhau. Nếu đang giận dỗi sẽ sớm làm lành vui vẻ.",
+        career: "Thành công rực rỡ, dự án được duyệt, phỏng vấn đậu hoặc đạt thành tích nổi bật được mọi người công nhận.",
+        finance: "Tài lộc sáng rõ, doanh thu tăng trưởng, đầu tư thu về lợi nhuận minh bạch.",
+        action: "Tự tin tiến tới với năng lượng tích cực và cởi mở nhất!"
+      },
+      {
+        num: "XX", name: "Judgement", vi: "Tiếng Gọi Thức Tỉnh & Tái Sinh", element: "Fire", yesNo: "YES", weight: 2,
+        visual: "Tiếng tù và vang lên từ tầng mây hồng, đánh thức những tâm hồn trỗi dậy đón nhận một chương đời hoàn toàn mới.",
+        love: "Lá bài số 1 về sự **quay lại hoặc cho nhau cơ hội thứ hai** sau khi cả hai đã nhìn nhận rõ lỗi lầm quá khứ. Đây là lúc đưa ra quyết định dứt khoát cho mối quan hệ.",
+        career: "Nhận được lời mời hợp tác trở lại, kết quả đánh giá quan trọng hoặc tìm ra đúng 'sứ mệnh/nghề nghiệp' mà bạn thực sự thuộc về.",
+        finance: "Thu hồi được khoản tiền cũ hoặc nhận phần thưởng xứng đáng với công sức đã bỏ ra.",
+        action: "Tha thứ cho quá khứ và đưa ra quyết định cuối cùng không hối tiếc."
+      },
+      {
+        num: "XXI", name: "The World", vi: "Vòng Nguyệt Quế Viên Mãn", element: "Earth", yesNo: "YES", weight: 3,
+        visual: "Vũ công bay lượn tự do giữa vòng hoa nguyệt quế tròn đầy, 4 góc là 4 linh thú tinh tú hội tụ.",
+        love: "Sự trọn vẹn và viên mãn! Một mối quan hệ đi đến cái kết đẹp (cam kết sâu sắc) hoặc bạn đã hoàn thành trọn vẹn bài học tình cảm để bước lên tầng cao mới.",
+        career: "Hoàn thành xuất sắc dự án/KPI, mở rộng quy mô ra thị trường lớn hơn hoặc đạt cột mốc đáng tự hào trong sự nghiệp.",
+        finance: "Tài chính đủ đầy, thu hoạch trọn vẹn thành quả từ những nỗ lực trước đó.",
+        action: "Ăn mừng thành quả hiện tại và sẵn sàng mở ra một hành trình lớn hơn."
+      }
+    ];
+
+    /* 4 Bộ Ẩn Phụ chuẩn Star Spinner Tarot: Wands, Chalices, Swords, Coins */
+    const SUITS_CONFIG = [
+      {
+        suit: "Wands", suitVi: "Bộ Gậy Hoa Đào (Lửa)", element: "Fire",
+        loreTheme: "Nhành gỗ nảy lộc hoa đào hồng và các tiên nữ rừng xanh (Faeries) — đại diện cho đam mê, tốc độ, sáng tạo và hành động bộc phát.",
+        timing: "Khung thời gian nhanh: Trong vòng vài ngày đến 2–3 tuần tới."
+      },
+      {
+        suit: "Chalices", suitVi: "Bộ Cốc Tiên Cá (Nước)", element: "Water",
+        loreTheme: "Cổ tích Nàng Tiên Cá (The Little Mermaid) với chiếc cốc vàng chạm sóng biển — đại diện cho tình yêu, trực giác, nỗi nhớ và giấc mơ.",
+        timing: "Khung thời gian cảm xúc: Trong khoảng 3–6 tuần hoặc gắn với các tháng mùa Nước."
+      },
+      {
+        suit: "Swords", suitVi: "Bộ Kiếm Chim Lửa (Khí)", element: "Air",
+        loreTheme: "Truyền thuyết Chim Lửa (The Firebird) và thanh kiếm sắc lạnh giữa tầng mây — đại diện cho lý trí, sự thật thẳng thắn, đấu tranh tư tưởng.",
+        timing: "Khung thời gian tức thì hoặc biến động: Từ vài ngày đến 1–2 tuần."
+      },
+      {
+        suit: "Coins", suitVi: "Bộ Đồng Tiền Cổ Phong (Đất)", element: "Earth",
+        loreTheme: "Đồng xu hoa mai cổ phong và khu vườn trù phú — đại diện cho tiền bạc, công việc thực tế, sự kiên nhẫn và giá trị lâu dài.",
+        timing: "Khung thời gian chậm mà chắc: Từ 1–3 tháng trở lên."
+      }
+    ];
+
+    const RANKS_CONFIG = [
+      {
+        rank: "Ace", num: "ACE", weight: 3, yesNo: "YES",
+        visualPrefix: "Bàn tay bước ra từ vầng mây sao nâng niu",
+        loveBySuit: {
+          Wands: "Tia lửa thu hút thể xác và cảm hứng mới bùng lên cực nhanh! Có người muốn chủ động bắt chuyện hoặc rủ bạn đi gặp mặt ngay.",
+          Chalices: "Trái tim rung động thật sự! Một khởi đầu tình cảm mới đầy ngọt ngào hoặc cơ hội làm mới lại cảm xúc yêu đương chân thành.",
+          Swords: "Một cuộc nói chuyện thẳng thắn ba mặt một lời để làm rõ mối quan hệ, chấm dứt sự mập mờ.",
+          Coins: "Một mối quan hệ nghiêm túc, thực tế, có nền tảng vững chắc để tính chuyện lâu dài."
+        },
+        careerBySuit: {
+          Wands: "Ý tưởng dự án mới hoặc cơ hội công việc đầy nhiệt huyết vừa xuất hiện — hãy chớp lấy ngay!",
+          Chalices: "Công việc mang lại sự thỏa mãn cảm xúc, hợp với nghệ thuật, tư vấn, chữa lành hoặc truyền thông.",
+          Swords: "Quyết định chiến lược sắc bén, ký kết rõ ràng hoặc tìm ra hướng giải quyết triệt để cho bài toán khó.",
+          Coins: "Cơ hội tăng thu nhập, nhận job mới, hợp đồng mới hoặc nguồn vốn khởi đầu cực tốt."
+        }
+      },
+      {
+        rank: "Two", num: "II", weight: 2, yesNo: "YES",
+        visualPrefix: "Sự đối xứng và lựa chọn đầu tiên của",
+        loveBySuit: {
+          Wands: "Đang đứng ở bước lên kế hoạch cho tương lai nhưng một trong hai người vẫn còn phân vân giữa vùng an toàn và bước tiến xa hơn.",
+          Chalices: "Tình cảm hai chiều tâm đầu ý hợp (Hai nàng tiên cá trao chiếc cốc vàng)! Đối phương cũng có tình cảm và muốn kết nối sâu sắc với bạn.",
+          Swords: "Trạng thái khóa chặt lòng mình, cố tình không muốn nhìn vào sự thật của mối quan hệ vì sợ tổn thương.",
+          Coins: "Đang phải xoay xở cân bằng giữa chuyện tình cảm và áp lực công việc/cuộc sống bận rộn."
+        },
+        careerBySuit: {
+          Wands: "Thời điểm lập kế hoạch mở rộng hoặc cân nhắc giữa 2 hướng phát triển sự nghiệp.",
+          Chalices: "Hợp tác đôi bên cùng có lợi, gặp được khách hàng hoặc đồng nghiệp cực kỳ hợp rơ.",
+          Swords: "Đang bế tắc giữa 2 lựa chọn công việc ngang sức ngang tài, cần bỏ cảm tính để nhìn vào số liệu.",
+          Coins: "Xoay vòng vốn hoặc ôm cùng lúc 2 đầu việc, cần sắp xếp lại thời gian kẻo quá tải."
+        }
+      },
+      {
+        rank: "Three", num: "III", weight: 1, yesNo: "WAIT",
+        visualPrefix: "Sự lan tỏa và thử thách bước đầu của",
+        loveBySuit: {
+          Wands: "Đang ngóng chờ tin tức từ xa hoặc chờ đợi phản hồi từ đối phương; mối quan hệ có tiềm năng mở rộng nếu kiên nhẫn.",
+          Chalices: "Niềm vui hội ngộ, đi chơi ăn uống cùng bạn bè, nhưng nếu hỏi chuyện 1-1 thì mối quan hệ đang dừng ở mức vui vẻ xã giao hoặc có người thứ 3 tác động.",
+          Swords: "Tổn thương, thất vọng hoặc lời nói làm đau lòng nhau. Sự thật này tuy xót xa nhưng giúp bạn tỉnh ngộ.",
+          Coins: "Tình cảm xây dựng trên sự tôn trọng và cùng nhau vun đắp từng bước thực tế."
+        },
+        careerBySuit: {
+          Wands: "Kế hoạch đã phóng đi và bắt đầu thấy tín hiệu phản hồi tốt từ thị trường/khách hàng.",
+          Chalices: "Làm việc nhóm ăn ý, sự kiện/workshop hoặc chiến dịch cộng đồng diễn ra suôn sẻ.",
+          Swords: "Bất đồng quan điểm trong công việc hoặc bị từ chối một đề xuất — đừng để cảm xúc làm nhụt chí.",
+          Coins: "Được đánh giá cao nhờ tay nghề chuyên môn, phối hợp cực tốt với team/agency."
+        }
+      },
+      {
+        rank: "Four", num: "IV", weight: 1, yesNo: "WAIT",
+        visualPrefix: "Sự tĩnh tại và khuôn khổ của",
+        loveBySuit: {
+          Wands: "Mối quan hệ ấm áp, ổn định, có những buổi hẹn hò kỷ niệm vui vẻ hoặc tiến tới bước ra mắt.",
+          Chalices: "Nàng tiên cá thờ ơ trước chiếc cốc trao tới — bạn hoặc đối phương đang chán nản, khép lòng và bỏ lỡ sự quan tâm ngay trước mắt.",
+          Swords: "Cần tạm ngừng tranh luận, cho mối quan hệ một khoảng lặng nghỉ ngơi để hồi phục tâm lý.",
+          Coins: "Giữ khư khư cái tôi hoặc kiểm soát đối phương quá chặt vì sợ mất an toàn."
+        },
+        careerBySuit: {
+          Wands: "Hoàn thành một cột mốc dự án thành công, môi trường làm việc thân thiện, đáng gắn bó.",
+          Chalices: "Cảm giác nhàm chán, mất động lực với công việc hiện tại dù bên ngoài nhìn vào vẫn ổn.",
+          Swords: "Tạm nghỉ ngơi vài ngày để xả kiệt sức (burnout) trước khi đưa ra quyết định nhảy việc.",
+          Coins: "Giữ chặt nguồn thu ổn định hiện tại, chưa nên mạo hiểm bung tiền đầu tư lúc này."
+        }
+      },
+      {
+        rank: "Five", num: "V", weight: -2, yesNo: "NO",
+        visualPrefix: "Cuộc va chạm và xáo trộn năng lượng của",
+        loveBySuit: {
+          Wands: "Khẩu chiến, bất đồng quan điểm lặt vặt hoặc có sự cạnh tranh ngầm khiến cả hai mệt mỏi.",
+          Chalices: "Nàng tiên cá nhìn những chiếc cốc đổ — quá tập trung vào nỗi buồn quá khứ/người cũ mà quên mất những điều tốt đẹp vẫn còn lại.",
+          Swords: "Tranh cãi hơn thua đến mức thắng cuộc cãi vã nhưng mất đi tình cảm. Hãy hạ cái tôi xuống.",
+          Coins: "Cảm giác cô đơn, bị bỏ rơi hoặc mối quan hệ gặp áp lực thực tế về tài chính/khoảng cách."
+        },
+        careerBySuit: {
+          Wands: "Môi trường cạnh tranh gay gắt, họp hành tranh luận nhiều nhưng thiếu người chốt cuối.",
+          Chalices: "Tiếc nuối một cơ hội/khách hàng vừa tuột mất; hãy đứng dậy tập trung vào 2 chiếc cốc vẫn còn đứng vững.",
+          Swords: "Cẩn thận cạnh tranh không lành mạnh nơi công sở hoặc bất đồng gay gắt với khách hàng.",
+          Coins: "Giai đoạn thắt chặt chi tiêu hoặc doanh thu chững lại tạm thời, đừng tự xoay sở một mình mà hãy tìm hỗ trợ."
+        }
+      },
+      {
+        rank: "Six", num: "VI", weight: 2, yesNo: "YES",
+        visualPrefix: "Sự chuyển dịch và hồi đáp của",
+        loveBySuit: {
+          Wands: "Bạn nhận được sự ngưỡng mộ, chú ý lớn từ đối phương; mối quan hệ có bước tiến đáng tự hào.",
+          Chalices: "Lá bài đặc trưng của **kỷ niệm cũ & người cũ**! Người cũ vẫn nhớ về những khoảnh khắc êm đềm bên bạn và có xu hướng liên lạc hỏi thăm.",
+          Swords: "Rời bỏ vùng nước động để chèo thuyền sang bờ bình yên hơn — cùng nhau vượt qua sóng gió hoặc nhẹ nhàng bước tiếp.",
+          Coins: "Sự cho - nhận cân bằng, đối phương sẵn sàng hỗ trợ và san sẻ thực tế với bạn."
+        },
+        careerBySuit: {
+          Wands: "Chiến dịch/dự án thắng lợi vẻ vang, được sếp và khách hàng ghi nhận năng lực rõ rệt.",
+          Chalices: "Khách hàng cũ quay lại đặt dịch vụ hoặc làm việc với người quen cũ mang lại thuận lợi.",
+          Swords: "Chuyển việc hoặc chuyển đổi phương thức làm việc giúp bạn thoát khỏi mớ bòng bong hiện tại.",
+          Coins: "Được thanh toán công nợ, nhận thưởng hoặc tìm được nhà đầu tư/khách hàng sòng phẳng."
+        }
+      },
+      {
+        rank: "Seven", num: "VII", weight: 0, yesNo: "WAIT",
+        visualPrefix: "Bài toán thử thách bản lĩnh của",
+        loveBySuit: {
+          Wands: "Bạn phải đứng vững bảo vệ lập trường và ranh giới cá nhân trước những tác động hoặc lời bàn tán xung quanh.",
+          Chalices: "Nàng tiên cá trước 7 chiếc cốc ảo mộng — cẩn thận đang lý tưởng hóa đối phương (hoặc có quá nhiều vệ tinh mập mờ) mà thiếu thực tế!",
+          Swords: "Cảnh báo sự giấu giếm, lách luật, nói dối hoặc đối phương không hoàn toàn thành thật 100%.",
+          Coins: "Đã bỏ nhiều công sức vun đắp nhưng kết quả tình cảm đến chậm, đang tự hỏi có đáng để chờ tiếp không."
+        },
+        careerBySuit: {
+          Wands: "Khối lượng việc dồn dập nhưng bạn vẫn giữ được thế chủ động nếu kiên quyết bảo vệ phương án của mình.",
+          Chalices: "Có quá nhiều ý tưởng/lựa chọn nghề nghiệp cùng lúc làm bạn bị loạn, cần chọn 1 mục tiêu khả thi nhất.",
+          Swords: "Cần chiến lược khôn khéo, linh hoạt; đồng thời kiểm tra kỹ bảo mật thông tin/hợp đồng.",
+          Coins: "Đầu tư dài hạn đang trong giai đoạn chờ thu hoạch, đừng nóng ruột rút vốn sớm."
+        }
+      },
+      {
+        rank: "Eight", num: "VIII", weight: 1, yesNo: "YES",
+        visualPrefix: "Nhịp chuyển động dồn dập của",
+        loveBySuit: {
+          Wands: "Tin nhắn, cuộc gọi hoặc lời tỏ tình/hẹn gặp sẽ đến cực kỳ nhanh và bất ngờ trong ít ngày tới!",
+          Chalices: "Nàng tiên cá quay lưng rời bỏ những chiếc cốc không còn làm mình hạnh phúc — chủ động bước ra khỏi mối quan hệ nhạt nhẽo.",
+          Swords: "Bạn đang tự trói mình trong nỗi sợ và suy nghĩ tiêu cực, thực tế cánh cửa thoát ra vẫn mở.",
+          Coins: "Tình cảm được xây dựng bền bỉ qua sự quan tâm tỉ mỉ từng ngày."
+        },
+        careerBySuit: {
+          Wands: "Mọi việc chạy băng băng với tốc độ tên lửa! Tin báo đậu phỏng vấn, duyệt brief hoặc chốt đơn đến dồn dập.",
+          Chalices: "Quyết định rời bỏ một công việc/dự án không còn phù hợp với giá trị bản thân để tìm hướng đi sâu sắc hơn.",
+          Swords: "Cảm giác bị gò bó bởi quy định cũ kỹ, cần tự tháo băng bịt mắt để tìm giải pháp mới.",
+          Coins: "Giai đoạn cày cuốc rèn giũa tay nghề chăm chỉ, làm tới đâu chắc tiền tới đó."
+        }
+      },
+      {
+        rank: "Nine", num: "IX", weight: 1, yesNo: "WAIT",
+        visualPrefix: "Đỉnh cao trải nghiệm nội tâm của",
+        loveBySuit: {
+          Wands: "Trải qua nhiều tổn thương cũ nên bạn (hoặc họ) đang bật chế độ phòng vệ cao, vừa muốn yêu vừa sợ đau lần nữa.",
+          Chalices: "Lá bài Ước Nguyện Thành Sự Thật (Wish Card)! Bạn cảm thấy hài lòng, tự chủ và viên mãn với giá trị của bản thân.",
+          Swords: "Mất ngủ, trằn trọc suy nghĩ quá nhiều vào ban đêm. Nỗi sợ trong đầu bạn đang phóng đại hơn thực tế.",
+          Coins: "Độc lập, quyến rũ và tự chủ! Dù độc thân hay có đôi, bạn đều tỏa ra khí chất khiến người khác phải nể trọng."
+        },
+        careerBySuit: {
+          Wands: "Chỉ còn 1 bước cuối là về đích dự án, dù hơi đuối sức nhưng tuyệt đối đừng bỏ cuộc lúc này.",
+          Chalices: "Đạt được nguyện vọng công việc/doanh số như ý, khách hàng hài lòng tuyệt đối.",
+          Swords: "Áp lực deadline và lo âu quá mức, hãy chia nhỏ đầu việc ra giải quyết thay vì tự dằn vặt.",
+          Coins: "Tài chính dư dả, thu hoạch thành quả xứng đáng từ năng lực làm việc độc lập của bạn."
+        }
+      },
+      {
+        rank: "Ten", num: "X", weight: 1, yesNo: "WAIT",
+        visualPrefix: "Sự chạm ngưỡng hoàn tất chu kỳ của",
+        loveBySuit: {
+          Wands: "Một người đang phải gồng gánh quá nhiều trách nhiệm trong mối quan hệ này, cần chia sẻ bớt kẻo kiệt sức.",
+          Chalices: "Hạnh phúc trọn vẹn, bình yên như một gia đình thực thụ; sự gắn kết lâu dài và ấm áp.",
+          Swords: "Chấm dứt hoàn toàn một nỗi đau (Chim Lửa bay lên sau 10 thanh kiếm). Đã chạm đáy rồi thì từ giờ chỉ có đi lên và giải thoát.",
+          Coins: "Mối quan hệ vững chắc cả về tình cảm lẫn nền tảng kinh tế, gia đình ủng hộ."
+        },
+        careerBySuit: {
+          Wands: "Ôm đồm quá nhiều việc cùng lúc (overload), cần học cách bàn giao hoặc từ chối bớt việc ngoài phạm vi.",
+          Chalices: "Đội ngũ/khách hàng gắn bó lâu dài, uy tín thương hiệu tạo được thiện cảm lớn.",
+          Swords: "Kết thúc hẳn một dự án/công việc gây mệt mỏi kéo dài để bắt đầu trang mới nhẹ nhõm hơn.",
+          Coins: "Dòng tiền lớn, hợp đồng giá trị cao hoặc sự nghiệp bước vào giai đoạn ổn định bền vững."
+        }
+      },
+      {
+        rank: "Page", num: "PAGE", weight: 2, yesNo: "YES",
+        visualPrefix: "Thị Đồng mang thông điệp khởi đầu của",
+        loveBySuit: {
+          Wands: "Một tin nhắn thả thính vui vẻ, nhiệt tình hoặc lời rủ rê hẹn hò đầy năng lượng trẻ trung sắp tới.",
+          Chalices: "Lời thổ lộ ngọt ngào, tin nhắn làm lành hoặc một người mang năng lượng dịu dàng, tinh tế đang hướng về bạn.",
+          Swords: "Có người đang âm thầm 'stalk' mạng xã hội của bạn để dò xét động tĩnh nhưng cách nói chuyện còn hơi sắc lạnh.",
+          Coins: "Tình cảm chân thành, chậm mà chắc; đối phương muốn chứng minh bằng hành động thực tế."
+        },
+        careerBySuit: {
+          Wands: "Khởi động một ý tưởng sáng tạo mới, học thêm kỹ năng mới hoặc nhận tin vui từ dự án.",
+          Chalices: "Cảm hứng nghệ thuật/sáng tạo nội dung dồi dào, nhận được lời khen hoặc lời mời hợp tác dễ thương.",
+          Swords: "Nhạy bén nắm bắt xu hướng thị trường, phân tích brief và dữ liệu cực nhanh.",
+          Coins: "Cơ hội học nghề, nhận job mới mang lại khoản thu thực tế ngay từ bước đầu."
+        }
+      },
+      {
+        rank: "Knight", num: "KNIGHT", weight: 2, yesNo: "YES",
+        visualPrefix: "Kỵ Sĩ hành động quyết liệt của",
+        loveBySuit: {
+          Wands: "Tấn công dồn dập, cuốn hút mãnh liệt nhưng cẩn thận kiểu 'cả thèm chóng chán' nếu chỉ chạy theo cảm xúc nhất thời.",
+          Chalices: "Bạch mã hoàng tử lãng mạn! Một lời tỏ tình, lời mời hẹn hò ngọt ngào hoặc sự quan tâm chiều chuộng đang tiến về phía bạn.",
+          Swords: "Lao thẳng vào vấn đề, nói năng thẳng thắn đôi khi hơi vội vàng cắt ngang cảm xúc.",
+          Coins: "Người cực kỳ đáng tin cậy, chung thủy, đi chậm nhưng đã hứa là làm tới cùng."
+        },
+        careerBySuit: {
+          Wands: "Triển khai công việc thần tốc, dám nghĩ dám làm, rất hợp chạy chiến dịch ngắn hạn.",
+          Chalices: "Theo đuổi dự án bằng cả trái tim và sự tinh tế trong giao tiếp với khách hàng.",
+          Swords: "Hành động quyết liệt, xử lý khủng hoảng hoặc chốt deal nhanh gọn không chần chừ.",
+          Coins: "Làm việc kiên trì, có quy trình chuẩn chỉnh, đảm bảo tiến độ và chất lượng đầu ra 100%."
+        }
+      },
+      {
+        rank: "Queen", num: "QUEEN", weight: 3, yesNo: "YES",
+        visualPrefix: "Nữ Hoàng làm chủ chiều sâu của",
+        loveBySuit: {
+          Wands: "Bạn (hoặc đối phương) cực kỳ cuốn hút, tự tin và chủ động tỏa sáng khiến người kia không thể rời mắt.",
+          Chalices: "Sự thấu cảm sâu sắc, yêu thương dịu dàng và trực giác nhạy bén đọc vị được tâm tư đối phương.",
+          Swords: "Người phụ nữ độc lập, tỉnh táo, nhìn thấu mọi lời ngụy biện — yêu hết mình nhưng có ranh giới rất rõ ràng.",
+          Coins: "Người bạn đời/người yêu chu đáo, ấm áp, vừa giỏi chăm sóc vừa vững vàng tài chính."
+        },
+        careerBySuit: {
+          Wands: "Khả năng dẫn dắt dự án, truyền cảm hứng và làm chủ sân khấu/thương hiệu cá nhân xuất sắc.",
+          Chalices: "Thấu hiểu tâm lý khách hàng sâu sắc, cực kỳ thuận lợi cho ngành dịch vụ, Tarot, tư vấn và sáng tạo.",
+          Swords: "Chiến lược gia sắc sảo, giao tiếp thẳng vào trọng tâm, xử lý hợp đồng không kẽ hở.",
+          Coins: "Quản lý tài chính và vận hành công việc mát tay, biến ý tưởng thành tiền mặt thực tế."
+        }
+      },
+      {
+        rank: "King", num: "KING (LINH THÚ)", weight: 3, yesNo: "YES",
+        visualPrefix: "Vị Vua Linh Thú Thần Thoại (Đặc trưng Star Spinner) của",
+        loveBySuit: {
+          Wands: "Linh thú Sư Tử Bờm Hoa Lửa: Tình cảm nồng nhiệt, che chở mạnh mẽ và muốn làm điểm tựa dẫn dắt mối quan hệ.",
+          Chalices: "Linh thú Thần Biển Cả: Tình cảm trưởng thành, bao dung, bề ngoài điềm tĩnh nhưng bên trong cực kỳ sâu nặng.",
+          Swords: "Linh thú Bạch Hổ/Chim Ưng Gió: Lý trí, rõ ràng, công tâm; họ đánh giá mối quan hệ dựa trên sự tôn trọng và tương xứng trí tuệ.",
+          Coins: "Linh thú Hươu Thần Cổ Thụ: Cam kết bền vững nhất bộ bài! Mang lại sự an toàn tuyệt đối cả về tình cảm lẫn vật chất."
+        },
+        careerBySuit: {
+          Wands: "Tầm nhìn lãnh đạo lớn, làm chủ cuộc chơi và mở rộng quy mô dự án/thương hiệu mạnh mẽ.",
+          Chalices: "Làm chủ cảm xúc trong đàm phán, giữ uy tín và sự tin cậy tuyệt đối với khách hàng VIP.",
+          Swords: "Quyết định từ cấp quản lý/chuyên gia cao cấp, cần dựa trên luật lệ và chiến lược sắc bén.",
+          Coins: "Đỉnh cao tài chính và vị thế! Hợp đồng lớn, khách hàng sộp hoặc thành quả kinh doanh vững chắc."
+        }
+      }
+    ];
+
+    /* 4 Phiên bản lá VI. The Lovers đặc trưng của Star Spinner Tarot */
+    const LOVERS_VARIANTS = {
+      eros: {
+        num: "VI", name: "The Lovers • Eros & Psyche", vi: "Đôi Tình Nhân Thần Thoại",
+        visual: "Thần Eros có cánh ôm nàng Psyche giữa vòng hoa hồng — tình yêu vượt qua nghi ngờ để chạm tới sự gắn kết tâm hồn."
+      },
+      samesex_f: {
+        num: "VI", name: "The Lovers • Twin Blossoms", vi: "Đôi Tình Nhân Dưới Vòm Hoa",
+        visual: "Hai thiếu nữ nắm tay nhau dịu dàng dưới vòm hoa đào nở rộ — sự đồng điệu, dịu dàng và thấu cảm trọn vẹn."
+      },
+      samesex_m: {
+        num: "VI", name: "The Lovers • Starbound", vi: "Đôi Tình Nhân Giữa Tinh Tú",
+        visual: "Hai chàng trai tựa trán vào nhau dưới bầu trời sao — sự cam kết đồng hành và bảo vệ lẫn nhau."
+      },
+      nonbinary: {
+        num: "VI", name: "The Lovers • Celestial Union", vi: "Sự Giao Hòa Tự Do Đa Sắc",
+        visual: "Hai tâm hồn tự do kết nối giữa vòng nguyệt quế ánh sáng — tình yêu chân thật vượt qua mọi định kiến khuôn mẫu."
+      }
+    };
+
+    /* Khởi tạo trọn bộ bài Star Spinner (78 - 81 lá) */
+    function buildStarSpinnerDeck() {
+      const deck = [];
+      const variantMode = document.getElementById("loversVariant").value;
+
+      // 1. Thêm 22 lá Ẩn Chính (+ các bản The Lovers)
+      MAJOR_ARCANA_DATA.forEach(card => {
+        if (card.num === "VI") {
+          if (variantMode === "all") {
+            Object.values(LOVERS_VARIANTS).forEach(v => {
+              deck.push({ ...card, name: v.name, vi: v.vi, visual: v.visual, arcana: "Major", suit: "Major" });
+            });
+          } else {
+            const chosen = LOVERS_VARIANTS[variantMode];
+            deck.push({ ...card, name: chosen.name, vi: chosen.vi, visual: chosen.visual, arcana: "Major", suit: "Major" });
+          }
+        } else {
+          deck.push({ ...card, arcana: "Major", suit: "Major" });
+        }
+      });
+
+      // 2. Thêm 56 lá Ẩn Phụ
+      SUITS_CONFIG.forEach(s => {
+        RANKS_CONFIG.forEach(r => {
+          deck.push({
+            num: `${r.num} • ${s.suit.toUpperCase()}`,
+            name: `${r.rank} of ${s.suit}`,
+            vi: `${r.rank} of ${s.suit} (${s.suitVi})`,
+            arcana: "Minor",
+            suit: s.suit,
+            element: s.element,
+            yesNo: r.yesNo,
+            weight: r.weight,
+            visual: `${r.visualPrefix} ${s.suitVi}: ${s.loreTheme}`,
+            love: r.loveBySuit[s.suit],
+            career: r.careerBySuit[s.suit],
+            finance: r.careerBySuit[s.suit],
+            timing: s.timing,
+            action: `Vận dụng năng lượng ${r.rank} của ${s.suitVi} để xử lý trực diện thay vì chần chừ.`
+          });
+        });
+      });
+
+      return deck;
+    }
+
+    /* ==========================================================================
+       2. HỆ THỐNG VẼ HỌA TIẾT SVG CHUẨN PHONG CÁCH STAR SPINNER TRÊN LÁ BÀI
+       ========================================================================== */
+    function getStarSpinnerSVG(card) {
+      // Màu sắc chủ đạo theo nguyên tố / bộ bài
+      const palette = {
+        Major: { bg: "#fdf3e7", stroke: "#8a5a2b", accent: "#d97f8c", star: "#d4af37" },
+        Wands: { bg: "#fff4ec", stroke: "#7a4424", accent: "#e88b7d", star: "#e09f3e" },
+        Chalices: { bg: "#eef7fa", stroke: "#2b5266", accent: "#7db8c9", star: "#d4af37" },
+        Swords: { bg: "#f4f2f8", stroke: "#3d3452", accent: "#9c8cb9", star: "#c59b49" },
+        Coins: { bg: "#f3f7ec", stroke: "#3b542b", accent: "#88a870", star: "#c59b49" }
+      }[card.suit] || { bg: "#fdf3e7", stroke: "#8a5a2b", accent: "#d97f8c", star: "#d4af37" };
+
+      let centerArt = "";
+
+      if (card.suit === "Wands") {
+        // Nhành gỗ nảy hoa đào đặc trưng của Star Spinner Wands
+        centerArt = `
+          <path d="M84 195 C80 140, 92 90, 82 32" stroke="${palette.stroke}" stroke-width="5" stroke-linecap="round" fill="none"/>
+          <path d="M84 125 C60 110, 50 92, 42 78" stroke="${palette.stroke}" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <path d="M86 95 C110 80, 122 68, 130 52" stroke="${palette.stroke}" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="82" cy="32" r="12" fill="${palette.accent}" stroke="${palette.stroke}" stroke-width="1.5"/>
+          <circle cx="42" cy="78" r="10" fill="#f9cad0" stroke="${palette.stroke}" stroke-width="1.5"/>
+          <circle cx="130" cy="52" r="11" fill="#f9cad0" stroke="${palette.stroke}" stroke-width="1.5"/>
+          <circle cx="105" cy="115" r="8" fill="${palette.accent}" stroke="${palette.stroke}" stroke-width="1.5"/>
+        `;
+      } else if (card.suit === "Chalices") {
+        // Cốc vàng Tiên Cá & Sóng biển của Star Spinner Chalices
+        centerArt = `
+          <path d="M54 55 C54 105, 114 105, 114 55 Z" fill="#f3d486" stroke="${palette.stroke}" stroke-width="2"/>
+          <path d="M84 95 L84 155" stroke="${palette.stroke}" stroke-width="5"/>
+          <path d="M60 155 Q84 145 108 155" stroke="${palette.stroke}" stroke-width="4" fill="none"/>
+          <path d="M25 175 Q55 162 84 175 T143 175" stroke="${palette.accent}" stroke-width="2.5" fill="none"/>
+          <path d="M35 50 Q84 25 133 50" stroke="${palette.accent}" stroke-width="1.8" stroke-dasharray="3 3" fill="none"/>
+        `;
+      } else if (card.suit === "Swords") {
+        // Thanh kiếm Chim Lửa xuyên mây của Star Spinner Swords
+        centerArt = `
+          <line x1="84" y1="22" x2="84" y2="185" stroke="${palette.stroke}" stroke-width="3.5"/>
+          <polygon points="84,16 78,34 90,34" fill="${palette.star}" stroke="${palette.stroke}" stroke-width="1.5"/>
+          <path d="M52 152 Q84 138 116 152" stroke="${palette.star}" stroke-width="4" fill="none"/>
+          <circle cx="84" cy="188" r="6" fill="${palette.star}" stroke="${palette.stroke}" stroke-width="1.5"/>
+          <path d="M32 95 C52 80, 116 80, 136 95" stroke="${palette.accent}" stroke-width="2" fill="none"/>
+        `;
+      } else if (card.suit === "Coins") {
+        // Đồng tiền Hoa Mai Cổ Phong của Star Spinner Coins
+        centerArt = `
+          <circle cx="84" cy="105" r="46" fill="#f7df94" stroke="${palette.stroke}" stroke-width="2.5"/>
+          <circle cx="84" cy="105" r="36" fill="none" stroke="${palette.stroke}" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <polygon points="84,68 93,94 120,94 98,110 106,136 84,120 62,136 70,110 48,94 75,94" fill="${palette.accent}" stroke="${palette.stroke}" stroke-width="1.5"/>
+          <circle cx="84" cy="105" r="8" fill="#fffdf5" stroke="${palette.stroke}" stroke-width="1.5"/>
+        `;
+      } else {
+        // Ẩn Chính (Major Arcana) - Ngôi sao 8 cánh Thần Thoại & Đôi mắt Trực Giác
+        centerArt = `
+          <circle cx="84" cy="105" r="52" fill="#f9e3e6" stroke="${palette.stroke}" stroke-width="1.8"/>
+          <polygon points="84,38 96,86 144,98 96,110 84,158 72,110 24,98 72,86" fill="#f7d57e" stroke="${palette.stroke}" stroke-width="1.8"/>
+          <ellipse cx="84" cy="98" rx="18" ry="10" fill="#fffdf8" stroke="${palette.stroke}" stroke-width="1.8"/>
+          <circle cx="84" cy="98" r="5" fill="${palette.stroke}"/>
+          <path d="M40 168 Q84 148 128 168" stroke="${palette.accent}" stroke-width="2" fill="none"/>
+        `;
+      }
+
+      return `
+        <svg viewBox="0 0 168 215" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="6" width="156" height="203" rx="78" ry="78" fill="${palette.bg}" stroke="${palette.stroke}" stroke-width="1.5"/>
+          <circle cx="84" cy="24" r="3" fill="${palette.star}"/>
+          <circle cx="32" cy="45" r="2" fill="${palette.star}"/>
+          <circle cx="136" cy="45" r="2" fill="${palette.star}"/>
+          ${centerArt}
+        </svg>
+      `;
+    }
+
+    /* ==========================================================================
+       3. BỘ MÁY BÓC TÁCH TRỌNG TÂM CÂU HỎI (INTENT & KEYWORD PARSER)
+       ========================================================================== */
+    function analyzeQuestionContext(rawQuestion) {
+      const q = (rawQuestion || "").toLowerCase();
+
+      const isEx = /(người cũ|ny cũ|ex|quay lại|hàn gắn|làm lành|chia tay|bỏ nhau)/.test(q);
+      const isLove = isEx || /(yêu|tình cảm|crush|người ấy|họ nghĩ gì|mối quan hệ|nhắn tin|tỏ tình|mập mờ|thật lòng|hẹn hò|kết hôn|vợ|chồng)/.test(q);
+      const isCareer = /(công việc|nhảy việc|nghỉ việc|xin việc|phỏng vấn|sếp|công ty|sự nghiệp|thăng tiến|làm ăn|agency|dự án|khách hàng)/.test(q);
+      const isFinance = /(tiền|tài chính|đầu tư|lời|lỗ|mua bán|mở quán|kinh doanh|doanh thu|nợ|vốn|lương)/.test(q);
+      const isYesNo = /(có nên|được không|phải không|không\?|hay không|nên hay|liệu có|có thành công)/.test(q);
+      const isTiming = /(bao giờ|khi nào|tháng mấy|bao lâu|sắp tới|thời điểm nào)/.test(q);
+
+      let category = "general";
+      let label = "Trọng tâm: Định hướng & Giải pháp";
+
+      if (isEx) {
+        category = "ex_love";
+        label = "Trọng tâm: Người Cũ & Khả Năng Quay Lại";
+      } else if (isLove) {
+        category = "love";
+        label = "Trọng tâm: Tâm Lý Đối Phương & Tình Cảm";
+      } else if (isFinance) {
+        category = "finance";
+        label = "Trọng tâm: Dòng Tiền & Hiệu Quả Đầu Tư";
+      } else if (isCareer) {
+        category = "career";
+        label = "Trọng tâm: Quyết Định Công Việc & Sự Nghiệp";
+      }
+
+      if (isYesNo) label += " • Chốt Yes/No";
+      if (isTiming) label += " • Mốc Thời Gian";
+
+      return { category, label, isEx, isLove, isCareer, isFinance, isYesNo, isTiming };
+    }
+
+    function detectQuestionIntent() {
+      const q = document.getElementById("questionInput").value.trim();
+      const badge = document.getElementById("intentBadge");
+      if (!q) {
+        badge.textContent = "Chủ đề: Tự động nhận diện";
+        return;
+      }
+      const info = analyzeQuestionContext(q);
+      badge.textContent = info.label;
+    }
+
+    function setSampleQuestion(text) {
+      document.getElementById("questionInput").value = text;
+      detectQuestionIntent();
+    }
+
+    /* ==========================================================================
+       4. LUỒNG XÁO BÀI, BỐC BÀI & HIỂN THỊ LÁ BÀI STAR SPINNER
+       ========================================================================== */
+    let activeDeck = [];
+    let pickedCards = [];
+    let requiredCount = 3;
+    let positionTitles = [];
+
+    const SPREAD_POSITIONS = {
+      "1": ["Trọng Tâm Trực Diện & Lời Chốt Hạ"],
+      "3_focus": ["1. Sự Thật Hiện Tại (Gốc rễ vấn đề)", "2. Điểm Nghẽn / Tác Động Ẩn", "3. Kết Cục & Hành Động Chốt Hạ"],
+      "3_love": ["1. Năng Lượng & Mong Muốn Của Bạn", "2. Tâm Lý Thật & Động Thái Của Đối Phương", "3. Kết Quả Mối Quan Hệ Sắp Tới"],
+      "3_career": ["1. Thực Trạng Công Việc / Cơ Hội Này", "2. Rủi Ro Hoặc Thử Thách Cần Nhìn Thấu", "3. Kết Quả Tài Chính & Quyết Định Nên Làm"]
+    };
+
+    function startShuffleTable() {
+      const q = document.getElementById("questionInput").value.trim();
+      if (!q) {
+        alert("Bạn hãy nhập câu hỏi cụ thể vào ô số 1 để bài trả lời đúng trọng tâm nhé!");
+        document.getElementById("questionInput").focus();
+        return;
+      }
+
+      const spreadKey = document.getElementById("spreadSelect").value;
+      positionTitles = SPREAD_POSITIONS[spreadKey];
+      requiredCount = positionTitles.length;
+      pickedCards = [];
+
+      // Xây dựng và xáo bộ bài Star Spinner (Fisher-Yates Shuffle)
+      activeDeck = buildStarSpinnerDeck();
+      for (let i = activeDeck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [activeDeck[i], activeDeck[j]] = [activeDeck[j], activeDeck[i]];
+      }
+
+      // Hiển thị bàn bốc bài
+      document.getElementById("tableSection").classList.add("visible");
+      document.getElementById("readingNotebook").classList.remove("visible");
+      document.getElementById("spreadStage").innerHTML = "";
+      updatePickCounter();
+
+      const ribbon = document.getElementById("deckRibbon");
+      ribbon.innerHTML = "";
+      // Hiển thị 32 lá đại diện trên bàn để khách bấm chọn trực quan
+      activeDeck.slice(0, 32).forEach((card, idx) => {
+        const btn = document.createElement("div");
+        btn.className = "mini-card-back";
+        btn.title = `Lá bài ẩn số ${idx + 1}`;
+        btn.onclick = () => pickCardFromRibbon(idx, btn);
+        ribbon.appendChild(btn);
+      });
+
+      document.getElementById("tableSection").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function updatePickCounter() {
+      const remain = requiredCount - pickedCards.length;
+      const titleEl = document.getElementById("pickCounterTitle");
+      if (remain > 0) {
+        titleEl.textContent = `Hãy chạm vào bộ bài bên dưới để rút thêm ${remain} lá bài (Đã chọn ${pickedCards.length}/${requiredCount})`;
+      } else {
+        titleEl.textContent = `Đã mở đủ ${requiredCount} lá bài Star Spinner Tarot — Xem giải mã trọng tâm bên dưới`;
+      }
+    }
+
+    function pickCardFromRibbon(deckIndex, btnElement) {
+      if (pickedCards.length >= requiredCount) return;
+
+      btnElement.classList.add("picked");
+      const rawCard = activeDeck[deckIndex];
+      // Tỷ lệ 28% bài Ngược để phản ánh đúng thực tế trải bài
+      const isReversed = Math.random() < 0.28;
+      const posTitle = positionTitles[pickedCards.length];
+
+      const drawn = {
+        ...rawCard,
+        isReversed,
+        posTitle
+      };
+
+      pickedCards.push(drawn);
+      renderCardToStage(drawn);
+      updatePickCounter();
+
+      if (pickedCards.length === requiredCount) {
+        renderDirectReading();
+      }
+    }
+
+    function renderCardToStage(card) {
+      const stage = document.getElementById("spreadStage");
+      const slot = document.createElement("div");
+      slot.className = "tarot-slot";
+
+      slot.innerHTML = `
+        <span class="slot-badge">${card.posTitle}</span>
+        <div class="star-spinner-card ${card.isReversed ? 'reversed-art' : ''}">
+          <div class="card-inner-frame">
+            <span class="corner-star tl">✦</span>
+            <span class="corner-star tr">✦</span>
+            <div class="card-top-arch">STAR SPINNER TAROT</div>
+            <div class="card-illustration-wrap">
+              ${getStarSpinnerSVG(card)}
+            </div>
+            <div class="card-Caption-visual">${card.visual}</div>
+            <div class="card-banner-Bottom">
+              <span class="card-numeral">${card.num}</span>
+              <span class="card-title-en">${card.name}</span>
+            </div>
+          </div>
+        </div>
+        <span class="orientation-pill ${card.isReversed ? 'rev' : 'up'}">
+          ${card.isReversed ? '↺ Chiều Ngược (Reversed) • Nghẽn / Nội tâm' : '↑ Chiều Xuôi (Upright) • Trực diện'}
+        </span>
+      `;
+      stage.appendChild(slot);
+    }
+
+    /* ==========================================================================
+       5. BỘ MÁY TỔNG HỢP TRẢ LỜI TRỰC DIỆN VÀO CÂU HỎI (KHÔNG CHUNG CHUNG)
+       ========================================================================== */
+    function computeDirectVerdict(question, context, cards) {
+      let score = 0;
+      cards.forEach(c => {
+        const w = c.isReversed ? -Math.abs(c.weight || 1) : (c.weight || 1);
+        score += w;
+      });
+
+      const lastCard = cards[cards.length - 1];
+      let verdictBadge = "";
+      let headline = "";
+      let summary = "";
+
+      if (score >= 3) {
+        verdictBadge = "CHỐT HẠ: TÍN HIỆU THUẬN LỢI RÕ RÀNG (NÊN TIẾN TỚI)";
+        if (context.isEx) {
+          headline = "Còn duyên và có khả năng kết nối lại nếu mở lời đúng nhịp!";
+        } else if (context.isLove) {
+          headline = "Tình cảm có sự hồi đáp tích cực — Mối quan hệ hoàn toàn có cửa tiến xa!";
+        } else if (context.isCareer || context.isFinance) {
+          headline = "Cơ hội khả thi và mang lại lợi ích thực tế — Nên chủ động nắm bắt!";
+        } else {
+          headline = "Năng lượng ủng hộ mạnh mẽ cho mong muốn của bạn!";
+        }
+      } else if (score >= 0) {
+        verdictBadge = "CHỐT HẠ: CÓ TIỀM NĂNG NHƯNG CẦN XỬ LÝ ĐIỂM NGHẼN";
+        if (context.isEx) {
+          headline = "Đối phương vẫn còn nghĩ về chuyện cũ nhưng đang chần chừ, chưa dám bước qua rào cản.";
+        } else if (context.isLove) {
+          headline = "Có tình cảm nhưng đang vướng sự e dè hoặc thiếu một cuộc nói chuyện rõ ràng.";
+        } else if (context.isCareer || context.isFinance) {
+          headline = "Làm được nhưng không ăn xổi được — Cần rà soát kỹ điều kiện trước khi chốt.";
+        } else {
+          headline = "Mọi thứ đang ở thế 50/50, kết quả phụ thuộc vào bước điều chỉnh của bạn.";
+        }
+      } else {
+        verdictBadge = "CHỐT HẠ: CẢNH BÁO ĐỎ — KHÔNG NÊN VỘI VÀNG / NÊN DỪNG LẠI";
+        if (context.isEx) {
+          headline = "Hiện tại CHƯA có cửa quay lại bền vững — Cố níu kéo lúc này chỉ làm bạn tổn thương thêm.";
+        } else if (context.isLove) {
+          headline = "Đối phương đang thu mình hoặc mối quan hệ có sự lệch pha lớn — Đừng lụy hay ép buộc.";
+        } else if (context.isCareer || context.isFinance) {
+          headline = "Rủi ro cao hơn lợi ích — Chưa nên nhảy việc mù quáng hoặc xuống tiền lúc này!";
+        } else {
+          headline = "Năng lượng đang bị nghẽn, cần lùi lại bảo vệ bản thân trước.";
+        }
+      }
+
+      // Phân tích mạch chuyển động của tổ hợp bài
+      const suitCounts = {};
+      cards.forEach(c => { suitCounts[c.suit] = (suitCounts[c.suit] || 0) + 1; });
+
+      let comboNote = `Lá chốt cuối cùng là <strong>${lastCard.name} (${lastCard.isReversed ? 'Ngược' : 'Xuôi'})</strong>: `;
+      if (context.isLove) {
+        comboNote += lastCard.love;
+      } else if (context.isCareer || context.isFinance) {
+        comboNote += lastCard.career;
+      } else {
+        comboNote += `${lastCard.love} Đồng thời về công việc: ${lastCard.career}`;
+      }
+
+      if (context.isTiming) {
+        const timingRef = lastCard.timing || "Trong vòng 3–6 tuần tới khi năng lượng lá bài xoay chuyển.";
+        comboNote += `<br><br>⏳ <strong>Mốc thời gian dự kiến cho câu hỏi của bạn:</strong> ${timingRef}`;
+      }
+
+      return { verdictBadge, headline, comboNote };
+    }
+
+    async function renderDirectReading() {
+      const question = document.getElementById("questionInput").value.trim();
+      const context = analyzeQuestionContext(question);
+      const verdict = computeDirectVerdict(question, context, pickedCards);
+
+      const notebook = document.getElementById("readingNotebook");
+      const contentEl = document.getElementById("readingContent");
+      notebook.classList.add("visible");
+
+      let cardsHtml = pickedCards.map((c, idx) => {
+        // Chọn đúng trọng tâm nghĩa theo câu hỏi của khách
+        let primaryMeaning = "";
+        if (context.isLove) {
+          primaryMeaning = `<strong>Trọng tâm Tình cảm / Tâm lý đối phương:</strong> ${c.love}`;
+        } else if (context.isFinance) {
+          primaryMeaning = `<strong>Trọng tâm Tài chính / Kinh doanh:</strong> ${c.finance || c.career}`;
+        } else if (context.isCareer) {
+          primaryMeaning = `<strong>Trọng tâm Công việc / Sự nghiệp:</strong> ${c.career}`;
+        } else {
+          primaryMeaning = `<strong>Góc độ Tình cảm:</strong> ${c.love}<br><strong>Góc độ Công việc & Thực tế:</strong> ${c.career}`;
+        }
+
+        const revAdjustment = c.isReversed
+          ? `<li style="color:#822735;"><strong>Lưu ý vì lá bài ra CHIỀU NGƯỢC:</strong> Năng lượng của <em>${c.name}</em> đang bị trì hoãn, đi vào nội tâm hoặc biểu hiện thái quá. Bạn không nên nóng vội ép sự việc diễn ra ngay lập tức mà phải tháo gỡ nút thắt tâm lý trước.</li>`
+          : "";
+
+        return `
+          <div class="card-analysis-item">
+            <h3>Vị trí ${idx + 1} (${c.posTitle}): ${c.name} — ${c.vi} [${c.isReversed ? 'Ngược' : 'Xuôi'}]</h3>
+            <div class="visual-lore-box">
+              🎨 <strong>Hình tượng trên lá bài Star Spinner:</strong> ${c.visual}
+            </div>
+            <ul class="direct-points">
+              <li>${primaryMeaning}</li>
+              ${revAdjustment}
+              <li><strong>Hành động thực tế cần làm:</strong> ${c.action}</li>
+            </ul>
+          </div>
+        `;
+      }).join("");
+
+      contentEl.innerHTML = `
+        <div class="verdict-banner">
+          <div class="verdict-header">
+            <span class="verdict-tag">${verdict.verdictBadge}</span>
+            <span style="font-size:0.82rem; color:#e8c67a;">Câu hỏi: "${question}"</span>
+          </div>
+          <div class="verdict-main-answer">${verdict.headline}</div>
+          <div class="verdict-sub">${verdict.comboNote}</div>
+        </div>
+
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:1.75rem; margin-bottom:14px;">
+          Giải Mã Chi Tiết Từng Lá Bài Theo Ngữ Cảnh Câu Hỏi
+        </h2>
+        ${cardsHtml}
+        <div id="aiDeepSection"></div>
+      `;
+
+      notebook.scrollIntoView({ behavior: "smooth" });
+
+      // Nếu người dùng đã cài đặt Gemini API Key thì gọi thêm AI Reader phân tích sâu từng chữ
+      const savedKey = localStorage.getItem("STAR_SPINNER_GEMINI_KEY");
+      if (savedKey) {
+        runGeminiDeepReading(savedKey, question, pickedCards);
+      }
+    }
+
+    function drawClarifierCard() {
+      if (pickedCards.length >= 6) {
+        alert("Bạn đã rút tối đa các lá làm rõ cho trải bài này rồi!");
+        return;
+      }
+      const nextCardRaw = activeDeck[32 + pickedCards.length];
+      const drawn = {
+        ...nextCardRaw,
+        isReversed: Math.random() < 0.28,
+        posTitle: `Lá Làm Rõ #${pickedCards.length - requiredCount + 1} (Clarifier)`
+      };
+      pickedCards.push(drawn);
+      renderCardToStage(drawn);
+      renderDirectReading();
+    }
+
+    /* ==========================================================================
+       6. TÍCH HỢP TÙY CHỌN GEMINI AI READER THỰC CHIẾN
+       ========================================================================== */
+    async function runGeminiDeepReading(apiKey, question, cards) {
+      const aiBox = document.getElementById("aiDeepSection");
+      if (!aiBox) return;
+
+      aiBox.innerHTML = `
+        <div class="card-analysis-item" style="border-color:#c59b49; background:#fdf6e4;">
+          <h3>✨ AI Tarot Reader đang phân tích sâu từng chữ trong câu hỏi của bạn...</h3>
+        </div>
+      `;
+
+      const cardListText = cards.map((c, i) =>
+        `${i + 1}. Vị trí [${c.posTitle}]: Lá ${c.name} (${c.isReversed ? 'Chiều Ngược' : 'Chiều Xuôi'}) - Hình tượng Star Spinner: ${c.visual}`
+      ).join("\n");
+
+      const prompt = `
+Bạn là một Tarot Reader chuyên nghiệp 5 năm kinh nghiệm, đọc bài sắc bén, thẳng thắn, thực tế, không dùng văn mẫu chung chung vô thưởng vô phạt.
+Bộ bài đang sử dụng là "The Star Spinner Tarot" của họa sĩ Trungles.
+
+Câu hỏi của khách: "${question}"
+Các lá bài rút được:
+${cardListText}
+
+Hãy trả lời trực diện bằng tiếng Việt theo đúng 3 mục ngắn gọn, súc tích:
+1. TRẢ LỜI THẲNG VÀO CÂU HỎI: Chốt ngay câu trả lời cho câu hỏi "${question}" dựa trên sự kết hợp của các lá bài (nói thẳng tâm lý/tình huống thực tế, không vòng vo).
+2. SỰ LIÊN KẾT HÌNH TƯỢNG STAR SPINNER: Chỉ ra điểm đắt giá nhất khi các lá bài này đứng cạnh nhau.
+3. LỜI KHUYÊN HÀNH ĐỘNG CỤ THỂ TRONG 7 NGÀY TỚI: Khách nên làm gì và tuyệt đối tránh làm gì.
+      `.trim();
+
+      try {
+        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+          })
+        });
+        const data = await res.json();
+        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (text) {
+          const formatted = text
+            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+            .replace(/\n/g, "<br>");
+          aiBox.innerHTML = `
+            <div class="card-analysis-item" style="border:2px solid #c59b49; background:#fffef7;">
+              <h3>✨ Luận Giải Chuyên Sâu Từ AI Reader (Cá Nhân Hóa 100% Cho Câu Hỏi)</h3>
+              <div style="font-size:0.95rem; line-height:1.7; margin-top:10px;">${formatted}</div>
+            </div>
+          `;
+        } else {
+          aiBox.innerHTML = "";
+        }
+      } catch (err) {
+        aiBox.innerHTML = "";
+      }
+    }
+
+    /* Tiện ích Giao Diện & Modal */
+    function toggleTheme() {
+      document.body.classList.toggle("pastel-mode");
+      const btn = document.getElementById("themeToggleBtn");
+      btn.textContent = document.body.classList.contains("pastel-mode")
+        ? "🌸 Nền: Phấn Hồng Kem"
+        : "🌿 Nền: Vườn Cỏ Nắng";
+    }
+
+    function openAiModal() {
+      document.getElementById("geminiKeyInput").value = localStorage.getItem("STAR_SPINNER_GEMINI_KEY") || "";
+      document.getElementById("aiModal").classList.add("open");
+    }
+
+    function closeAiModal() {
+      document.getElementById("aiModal").classList.remove("open");
+    }
+
+    function saveAiKey() {
+      const val = document.getElementById("geminiKeyInput").value.trim();
+      if (val) {
+        localStorage.setItem("STAR_SPINNER_GEMINI_KEY", val);
+        document.getElementById("aiModalBtn").classList.add("active-ai");
+        document.getElementById("aiModalBtn").textContent = "✨ AI Reader: Đã Bật";
+      } else {
+        localStorage.removeItem("STAR_SPINNER_GEMINI_KEY");
+        document.getElementById("aiModalBtn").classList.remove("active-ai");
+        document.getElementById("aiModalBtn").textContent = "✨ Cấu hình AI Reader (Tùy chọn)";
+      }
+      closeAiModal();
+    }
+
+    function resetSession() {
+      document.getElementById("questionInput").value = "";
+      document.getElementById("tableSection").classList.remove("visible");
+      document.getElementById("readingNotebook").classList.remove("visible");
+      detectQuestionIntent();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Kiểm tra trạng thái AI Key khi mở trang
+    window.addEventListener("DOMContentLoaded", () => {
+      if (localStorage.getItem("STAR_SPINNER_GEMINI_KEY")) {
+        document.getElementById("aiModalBtn").classList.add("active-ai");
+        document.getElementById("aiModalBtn").textContent = "✨ AI Reader: Đã Bật";
+      }
+    });
+  </script>
+</body>
+</html>
